@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.service.TeamService;
 
@@ -39,7 +40,10 @@ public class TeamController {
 	public ResponseEntity<Team> getTeamById(@PathVariable("id") long id) {
 		return new ResponseEntity<Team>(teamService.getTeamById(id), HttpStatus.OK);
 	}
-	
+	@GetMapping("{id}/employees")
+	public List<Employee> getEmployeesByTeam(@PathVariable("id") long id) {
+		return teamService.getEmployeesByTeam(id);
+	}
 	@PutMapping("{id}")
 	public ResponseEntity<Team> updateTeam(@PathVariable("id") long id, @RequestBody Team team) {
 		return new ResponseEntity<Team>(teamService.updateTeam(team, id), HttpStatus.OK);

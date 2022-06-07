@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.springAPI.demo.exception.ResourceNotFound;
+import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.repository.TeamRepository;
 import com.springAPI.demo.service.TeamService;
@@ -22,9 +23,14 @@ public class TeamServiceImpl implements TeamService{
 
 	@Override
 	public List<Team> getAllTeams() {
-		return teamRepository.findAll();
+		return (List<Team>) teamRepository.findAll();
 	}
-
+	
+	@Override
+	public List<Employee> getEmployeesByTeam(long id) {
+		return teamRepository.getEmployeesByTeam(id);
+	}
+	
 	@Override
 	public Team getTeamById(long id) {
 		return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team", "id", id));

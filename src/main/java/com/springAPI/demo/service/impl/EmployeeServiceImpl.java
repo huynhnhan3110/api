@@ -1,5 +1,6 @@
 package com.springAPI.demo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	// Get All Employee
 	@Override
 	public List<Employee> getAllEmployees() {
-		return employeeRepository.findAll();
+			List<Employee> liste = employeeRepository.findAll();
+			System.out.println(liste);
+			return liste;
 	}
 	
 	// Get Employee by ID
@@ -49,7 +52,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		existingEmployee.setMoneyPerHour(employee.getMoneyPerHour());
 		existingEmployee.setSex(employee.getSex());
 		existingEmployee.setPosition(employee.getPosition());
-		existingEmployee.setTeam_id(employee.getTeam_id());
 		employeeRepository.save(existingEmployee);
 		return existingEmployee;
 	}

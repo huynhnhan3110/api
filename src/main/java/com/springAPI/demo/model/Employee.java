@@ -2,12 +2,20 @@ package com.springAPI.demo.model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "employees")
@@ -35,15 +43,22 @@ public class Employee {
 	@Column(name = "money_per_hour")
 	private double moneyPerHour;
 	
-	@Column(name = "team")
-	private int team_id;
+//	@Column(name = "team", nullable = false)
+//	private int team_id;
+	
+	@ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
+	@JsonBackReference
+	private Team team;
+	
 	
 	public Employee() {
 		super();
 	}
 
+	
+
 	public Employee(String fullName, int age, String sex, String address, String position, double moneyPerHour,
-			int team_id) {
+			Team team) {
 		super();
 		this.fullName = fullName;
 		this.age = age;
@@ -51,8 +66,10 @@ public class Employee {
 		this.address = address;
 		this.position = position;
 		this.moneyPerHour = moneyPerHour;
-		this.team_id = team_id;
+		this.team = team;
 	}
+
+
 
 	public long getId() {
 		return id;
@@ -109,19 +126,23 @@ public class Employee {
 	public void setMoneyPerHour(double moneyPerHour) {
 		this.moneyPerHour = moneyPerHour;
 	}
-
-	public int getTeam_id() {
-		return team_id;
+	
+	public Team getTeam() {
+		return team;
 	}
 
-	public void setTeam_id(int team_id) {
-		this.team_id = team_id;
+	public void setTeam(Team team) {
+		this.team = team;
 	}
+
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, age, fullName, id, moneyPerHour, position, sex, team_id);
+		return Objects.hash(address, age, fullName, id, moneyPerHour, position, sex, team);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -136,15 +157,7 @@ public class Employee {
 				&& id == other.id
 				&& Double.doubleToLongBits(moneyPerHour) == Double.doubleToLongBits(other.moneyPerHour)
 				&& Objects.equals(position, other.position) && Objects.equals(sex, other.sex)
-				&& team_id == other.team_id;
+				&& Objects.equals(team, other.team);
 	}
-	
-	
-	
-//	@ManyToOne
-//	private Team team;
-//	
-//	@OneToOne
-//	private Working working;
 	
 }

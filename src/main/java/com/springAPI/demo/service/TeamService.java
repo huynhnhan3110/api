@@ -2,6 +2,7 @@ package com.springAPI.demo.service;
 
 import java.util.List;
 
+import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Team;
 
 public interface TeamService {
@@ -10,4 +11,5 @@ public interface TeamService {
 	Team getTeamById(long id);
 	Team updateTeam(Team team, long id);
 	void deleteTeam(long id);
+	List<Employee> getEmployeesByTeam(long id);
 }

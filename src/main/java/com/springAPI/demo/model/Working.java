@@ -16,17 +16,17 @@ public class Working {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long no_of_employee;
 	
-	@Column(name = "number_hour", nullable = false)
-	private String numberHour;
+	@Column(name = "number_hour")
+	private int numberHour;
 
 	public Working() {
 	}
 
-	public Working(String numberHour) {
+	public Working(int numberHour) {
 		this.numberHour = numberHour;
 	}
 
-	public Working(long no_of_employee, String numberHour) {
+	public Working(long no_of_employee, int numberHour) {
 		this.no_of_employee = no_of_employee;
 		this.numberHour = numberHour;
 	}
@@ -39,11 +39,11 @@ public class Working {
 		this.no_of_employee = no_of_employee;
 	}
 
-	public String getNumberHour() {
+	public int getNumberHour() {
 		return numberHour;
 	}
 
-	public void setNumberHour(String numberHour) {
+	public void setNumberHour(int numberHour) {
 		this.numberHour = numberHour;
 	}
 
