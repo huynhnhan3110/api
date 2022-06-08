@@ -1,16 +1,19 @@
 package com.springAPI.demo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.springAPI.demo.exception.ResourceNotFound;
+import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Working;
 import com.springAPI.demo.repository.WorkingRepository;
 import com.springAPI.demo.service.WorkingService;
 @Service
 public class WorkingServiceImpl implements WorkingService{
 	private WorkingRepository workingRepository;
+	
 	public WorkingServiceImpl(WorkingRepository workingRepository) {
 		this.workingRepository = workingRepository;
 	}
@@ -24,7 +27,8 @@ public class WorkingServiceImpl implements WorkingService{
 	public List<Working> getAllWorkings() {
 		return (List<Working>) workingRepository.findAll();
 	}
-
+	
+	
 	@Override
 	public Working getWorkingById(long id) {
 		return workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working", "id", id));
@@ -43,5 +47,16 @@ public class WorkingServiceImpl implements WorkingService{
 		Working existingWorking = workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working", "id", id));
 		workingRepository.delete(existingWorking);
 	}
+//	@Override
+//	public List<Working> getWorkingByEmployee(long id) {
+//		List<Working> allWorkings = workingRepository.findAll();
+//		List<Working> filteredWorking = new ArrayList<Working>();
+//		for(Working w : allWorkings) {
+//			if(w.getEmployee_id() == (int)id) {
+//				filteredWorking.add(w);
+//			}
+//		}
+//		return filteredWorking;
+//	}
 
 }
