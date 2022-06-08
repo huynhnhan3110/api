@@ -17,7 +17,6 @@ import com.springAPI.demo.model.Statistics;
 import com.springAPI.demo.model.Working;
 import com.springAPI.demo.repository.EmployeeRepository;
 import com.springAPI.demo.repository.StatisticRepository;
-import com.springAPI.demo.repository.TeamRepository;
 import com.springAPI.demo.repository.WorkingRepository;
 import com.springAPI.demo.service.StatisticsService;
 @Service
@@ -46,8 +45,8 @@ public class StatisticsServiceImpl implements StatisticsService{
 			}
 			Statistics statisticsEachEmployee = new Statistics();
 			statisticsEachEmployee.setNo_of_employee((int)e.getId());
-			statisticsEachEmployee.setMoney(e.getMoneyPerHour() * sumOfHourEachEmployee);
-			statistics.add(statisticsEachEmployee);
+			statisticsEachEmployee.setMoney(e.getMoneyPerHour() * sumOfHourEachEmployee); // update to table
+			statistics.add(statisticsEachEmployee); 
 		}
 		statisticRepository.saveAll(statistics);
 		return statistics;
