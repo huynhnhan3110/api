@@ -1,17 +1,11 @@
 package com.springAPI.demo.model;
 
-import java.util.Objects;
-
-import javax.persistence.CascadeType;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -19,13 +13,13 @@ import javax.persistence.Table;
 public class Working {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long no_of_employee;
+	private long id;
 	
-
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@OneToOne(cascade = CascadeType.ALL)
-//    private Employee employee;
+	@Column(name="employee_id")
+    private long employee_id;
 	
+	@Column(name="date_time")
+	private Date date_time;
 	
 	@Column(name = "number_hour")
 	private int numberHour;
@@ -33,21 +27,47 @@ public class Working {
 	public Working() {
 	}
 
-	public Working(int numberHour) {
+	public Working(long id, long employee_id, int numberHour, Date date_time) {
+		this.id = id;
+		this.employee_id = employee_id;
+		this.numberHour = numberHour;
+		this.date_time = date_time;
+	}
+
+	public Working(long employee_id, int numberHour, Date date_time) {
+		this.employee_id = employee_id;
+		this.date_time = date_time;
 		this.numberHour = numberHour;
 	}
 
-	public Working(long no_of_employee, int numberHour) {
-		this.no_of_employee = no_of_employee;
-		this.numberHour = numberHour;
+
+	
+
+	public Date getDate_time() {
+		return date_time;
 	}
 
-	public long getNo_of_employee() {
-		return no_of_employee;
+	public void setDate_time(Date date_time) {
+		this.date_time = date_time;
 	}
 
-	public void setNo_of_employee(long no_of_employee) {
-		this.no_of_employee = no_of_employee;
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+		
+
+	public long getEmployee_id() {
+		return employee_id;
+	}
+
+	public void setEmployee_id(long employee_id) {
+		this.employee_id = employee_id;
 	}
 
 	public int getNumberHour() {
@@ -58,22 +78,7 @@ public class Working {
 		this.numberHour = numberHour;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(no_of_employee, numberHour);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Working other = (Working) obj;
-		return no_of_employee == other.no_of_employee && Objects.equals(numberHour, other.numberHour);
-	}
+	
 	
 	
 }
