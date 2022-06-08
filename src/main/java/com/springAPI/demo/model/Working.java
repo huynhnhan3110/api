@@ -15,7 +15,7 @@ public class Working {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name="employee_id")
+//	@Column(name="employee_id")
     private long employee_id;
 	
 	@Column(name="date_time")
