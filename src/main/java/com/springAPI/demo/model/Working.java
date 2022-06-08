@@ -2,11 +2,16 @@ package com.springAPI.demo.model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +20,12 @@ public class Working {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long no_of_employee;
+	
+
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@OneToOne(cascade = CascadeType.ALL)
+//    private Employee employee;
+	
 	
 	@Column(name = "number_hour")
 	private int numberHour;
