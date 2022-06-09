@@ -14,5 +14,5 @@ public interface EmployeeService {
 
 	Employee saveEmployeeToExistTeam(long teamId, Employee employee);
 	Employee updateEmployeeTeam(long id, Team team);
-	List<Employee> searchEmployees(String query);
+	List<Employee> searchEmployees(String fullName, String address, String position);
 }

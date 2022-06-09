@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.service.EmployeeService;
-import com.springAPI.demo.service.impl.EmployeeServiceImpl;
-
-import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -68,8 +65,12 @@ public class EmployeeController {
 		return new ResponseEntity<String>("Employee delete success", HttpStatus.OK);
 	}
 	
-	@GetMapping(params = "query")
-	public ResponseEntity<List<Employee>> searchEmployees(@RequestParam String query) {
-		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(query), HttpStatus.OK);
+	@GetMapping("/search")
+	public ResponseEntity<List<Employee>> searchEmployees(
+			@RequestParam(required = false, defaultValue = "") String full_name,
+			@RequestParam(required = false, defaultValue = "") String address,
+			@RequestParam(required = false, defaultValue ="") String position
+			) {
+		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(full_name, address, position), HttpStatus.OK);
 	}
 }

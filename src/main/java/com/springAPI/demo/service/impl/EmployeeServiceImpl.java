@@ -1,13 +1,10 @@
 package com.springAPI.demo.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.repository.TeamRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.springAPI.demo.exception.ResourceNotFound;
@@ -86,8 +83,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public
-	List<Employee> searchEmployees(String query) {
-		return employeeRepository.searchEmployees(query);
+	List<Employee> searchEmployees(String full_name, String address, String position) {
+		return employeeRepository.searchEmployees(full_name,address,position);
 	}
 
 

@@ -1,12 +1,10 @@
 package com.springAPI.demo.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.springAPI.demo.exception.ResourceNotFound;
-import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Working;
 import com.springAPI.demo.repository.WorkingRepository;
 import com.springAPI.demo.service.WorkingService;
