@@ -40,11 +40,11 @@ public class EmployeeController {
 	}
 
 
-
 	@GetMapping
 	public List<Employee> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
+	
 	
 	
 	@GetMapping("{id}")
@@ -66,5 +66,10 @@ public class EmployeeController {
 	public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id) {
 		employeeService.deleteEmployee(id);
 		return new ResponseEntity<String>("Employee delete success", HttpStatus.OK);
+	}
+	
+	@GetMapping(params = "query")
+	public ResponseEntity<List<Employee>> searchEmployees(@RequestParam("query") String searchStr) {
+		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(searchStr), HttpStatus.OK);
 	}
 }

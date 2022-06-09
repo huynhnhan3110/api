@@ -84,11 +84,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeRepository.delete(existingEmployee);
 	}
 
-
-
-//	@Override
-//	@Query(value = "FROM teams e WHERE e.team_id = :id", nativeQuery = true)
-//	public List<Employee> getEmployeeByTeamId(@Param("id") long id)
+	@Override
+	public
+	List<Employee> searchEmployees(String query) {
+		return employeeRepository.searchEmployees(query);
+	}
 
 
 }
