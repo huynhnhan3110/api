@@ -69,7 +69,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping(params = "query")
-	public ResponseEntity<List<Employee>> searchEmployees(@RequestParam("query") String searchStr) {
-		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(searchStr), HttpStatus.OK);
+	public ResponseEntity<List<Employee>> searchEmployees(@RequestParam String query) {
+		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(query), HttpStatus.OK);
 	}
 }
