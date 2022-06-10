@@ -45,12 +45,12 @@ public class TeamServiceImpl implements TeamService{
 	
 	@Override
 	public Team getTeamById(long id) {
-		return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team", "id", id));
+		return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team not exist with id: "+ id));
 	}
 
 	@Override
 	public Team updateTeam(Team team, long id) {
-		Team existingTeam = teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team", "id", id));
+		Team existingTeam = teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team not exist with id: "+ id));
 		existingTeam.setName(team.getName());
 		teamRepository.save(existingTeam);
 		return existingTeam;
@@ -58,7 +58,7 @@ public class TeamServiceImpl implements TeamService{
 
 	@Override
 	public void deleteTeam(long id) {
-		Team existingTeam = teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team", "id", id));
+		Team existingTeam = teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team not exist with id: "+ id));
 		teamRepository.delete(existingTeam);
 	}
 	

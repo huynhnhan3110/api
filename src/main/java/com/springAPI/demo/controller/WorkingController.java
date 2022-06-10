@@ -19,7 +19,7 @@ import com.springAPI.demo.service.WorkingService;
 @RestController
 @RequestMapping("/api/working")
 public class WorkingController {
-private WorkingService workingService;
+	private WorkingService workingService;
 	
 	public WorkingController(WorkingService workingService) {
 		this.workingService = workingService;
@@ -37,6 +37,11 @@ private WorkingService workingService;
 	public ResponseEntity<Working> getWorkingById(@PathVariable("id") long id) {
 		return new ResponseEntity<Working>(workingService.getWorkingById(id), HttpStatus.OK);
 	}
+	@GetMapping(params = "employeeId")
+	public ResponseEntity<List<Working>> getWorkingByEmployee(long employeeId) {
+		return new ResponseEntity<List<Working>>(workingService.getWorkingByEmployee(employeeId), HttpStatus.OK);
+	}
+	
 	@PutMapping("{id}")
 	public ResponseEntity<Working> updateWorking(@PathVariable("id") long id, @RequestBody Working working) {
 		return new ResponseEntity<Working>(workingService.updateWorking(working, id), HttpStatus.OK);

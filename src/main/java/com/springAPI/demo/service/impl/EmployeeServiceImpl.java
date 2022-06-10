@@ -27,14 +27,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeRepository.save(employee);
 	}
 
+	
 	@Override
 	public Employee saveEmployeeToExistTeam(long teamId, Employee employee) {
-		Team team = teamRepository.findById(teamId).orElseThrow(() -> new ResourceNotFound("Team","id", teamId));
+		Team team = teamRepository.findById(teamId).orElseThrow(() -> new ResourceNotFound("Team not exist with id: "+ teamId));
 		employee.setTeam(team);
 		return employeeRepository.save(employee);
 	}
 
-	// Get All Employee
+	
 	@Override
 	public List<Employee> getAllEmployees() {
 			List<Employee> liste = employeeRepository.findAll();
@@ -42,21 +43,21 @@ public class EmployeeServiceImpl implements EmployeeService{
 			return liste;
 	}
 
-	// Get Employee by ID
+	
 	@Override
 	public Employee getEmployeeById(long id) {
 		Optional<Employee> employee = employeeRepository.findById(id);
 		if(employee.isPresent()) {
 			return employee.get();
 		} else {
-			throw new ResourceNotFound("Employee", "Id", id);
+			throw new ResourceNotFound("Employee not exist with id:" + id);
 		}
 	}
 	
-	// Update Employee by ID
+	
 	@Override
 	public Employee updateEmployee(Employee employee, long id) {
-		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee","id", id));
+		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id));
 		existingEmployee.setFullName(employee.getFullName());
 		existingEmployee.setAddress(employee.getAddress());
 		existingEmployee.setAge(employee.getAge());
@@ -69,18 +70,17 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	@Override
 	public Employee updateEmployeeTeam(long id, Team team) {
-		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee","id", id));
+		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id));
 		existingEmployee.setTeam(team);
 		employeeRepository.save(existingEmployee);
 		return existingEmployee;
 	}
 	@Override
 	public void deleteEmployee(long id) {
-		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employee", "id", id));
-		existingEmployee.removeTeam();
-		employeeRepository.delete(existingEmployee);
+		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id));
+//		existingEmployee.removeTeam();
+		employeeRepository.deleteById(existingEmployee.getId());
 	}
-
 	@Override
 	public
 	List<Employee> searchEmployees(String full_name, String address, String position) {

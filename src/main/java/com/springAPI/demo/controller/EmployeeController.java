@@ -36,17 +36,14 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(employeeService.saveEmployeeToExistTeam(teamId,employee), HttpStatus.CREATED);
 	}
 
-
 	@GetMapping
 	public List<Employee> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
 	
-	
-	
 	@GetMapping("{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long id) {
-		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id), HttpStatus.OK);
+		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id),HttpStatus.NOT_FOUND);
 	}
 
 	@PutMapping("{id}")

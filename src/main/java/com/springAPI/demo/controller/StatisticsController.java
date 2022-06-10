@@ -2,7 +2,10 @@ package com.springAPI.demo.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +24,14 @@ public class StatisticsController {
 	public List<Statistics> getAllStatisticEmployees() {
 		return statisticsService.getAllStatisticEmployees();
 	}
-
+	
+	@PostMapping
+	public List<Statistics> saveStatistic() {
+		return statisticsService.saveStatistic(statisticsService.calculateStatisticEmployees());
+	}
+	
+	@GetMapping(params = "employeeId")
+	public ResponseEntity<Statistics> getstatisticsByEmployee(long employeeId) {
+		return new ResponseEntity<Statistics>(statisticsService.getStatisticsByEmployeeId(employeeId), HttpStatus.OK);
+	}
 }
