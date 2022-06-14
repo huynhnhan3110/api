@@ -12,7 +12,9 @@ git clone https://github.com/coma123/Spring-Boot-Blog-REST-API.git
 ```
 
 **2. Create Maria database**
+
 Download Docker and install it
+
 Run command `docker run -p 3306:3306 -d --name mariadb -eMARIADB_ROOT_PASSWORD=Password123! mariadb:latest `
 
 Access to MariaDB Server by command `mariadb --host 127.0.0.1 -P 3306 --user root -p`
@@ -41,17 +43,11 @@ The app defines following CRUD APIs.
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
 | POST    | /api/employees/ | Add new employee and create new team | |
-| GET    | /api/users/{username}/profile | Get user profile by username | |
-| GET    | /api/users/{username}/posts | Get posts created by user | |
-| GET    | /api/users/{username}/albums | Get albums created by user | |
-| GET    | /api/users/checkUsernameAvailability | Check if username is available to register | |
-| GET    | /api/users/checkEmailAvailability | Check if email is available to register | |
-| POST   | /api/users | Add user (Only for admins) | [JSON](#usercreate) |
-| PUT    | /api/users/{username} | Update user (If profile belongs to logged in user or logged in user is admin) | [JSON](#userupdate) |
-| DELETE | /api/users/{username} | Delete user (For logged in user or admin) | |
-| PUT    | /api/users/{username}/giveAdmin | Give admin role to user (only for admins) | |
-| PUT    | /api/users/{username}/TakeAdmin | Take admin role from user (only for admins) | |
-| PUT    | /api/users/setOrUpdateInfo | Update user profile (If profile belongs to logged in user or logged in user is admin) | [JSON](#userinfoupdate) |
+| POST    | /api/employees/add?team={id} | Add new employee to existing id team | |
+| GET    | /api/employees/ | Get all employee | |
+| GET    | /api/employees/{id} | Get employee by id | |
+| PUT    | /api/employees/{id} | Update employee by id | |
+| DELETE    | /api/employees/{id} | Delete employee by id | |
 
 ### Posts
 
