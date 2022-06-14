@@ -53,9 +53,9 @@ The app defines following CRUD APIs.
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| GET    | /api/teams | Get all teams | |
+| GET    | /api/teams/ | Get all teams | |
 | GET    | /api/teams{id} | Get team by id | |
-| POST   | /api/teams | Add new team | |
+| POST   | /api/teams/ | Add new team | |
 | PUT    | /api/teams/{id} | Update team | |
 | DELETE | /api/teams/{id} | Delete team | |
 
@@ -74,31 +74,20 @@ The app defines following CRUD APIs.
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| GET    | /api/statistics | Get all statistics | |
+| GET    | /api/statistics/ | Get all statistics | |
 | GET    | /api/statistics?employeeId={id} | Get statistic by employee id | |
-| POST   | /api/statistics | Calculate statistics and save to db | |
+| POST   | /api/statistics/ | Calculate statistics and save to db | |
 
 ### Advance
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| GET    | /api/photos | Get all photos | |
-| GET    | /api/photos/{id} | Get photo by id | |
-| POST   | /api/photos | Create new photo (By logged in user) | [JSON](#photocreate) |
-| PUT    | /api/photos/{id} | Update photo (If photo belongs to logged in user or logged in user is admin) | [JSON](#photoupdate) |
-| DELETE | /api/photos/{id} | Delete photo (If photo belongs to logged in user or logged in user is admin) | |
+| GET    | /api/advances | Get all advances | |
+| GET    | /api/advances/{id} | Get advance by id | |
+| POST   | /api/advances | Create new advance | [JSON](#photocreate) |
+| PUT    | /api/advances/{id} | Update advance by id | [JSON](#photoupdate) |
+| DELETE | /api/advances/{id} | Delete advance by id | |
 
-### Todos
-
-| Method | Url | Description | Sample Valid Request Body |
-| ------ | --- | ----------- | ------------------------- |
-| GET    | /api/todos | Get all todos which belongs to logged in user | |
-| GET    | /api/todos/{id} | Get todo by id (If todo belongs to logged in user) | |
-| POST   | /api/todos | Create new todo (By logged in user) | [JSON](#todocreate) |
-| PUT    | /api/todos/{id} | Update todo (If todo belongs to logged in user) | [JSON](#todoupdate) |
-| DELETE | /api/todos/{id} | Delete todo (If todo belongs to logged in user) | |
-| PUT    | /api/todos/{id}/complete | Mark todo as complete (If todo belongs to logged in user) | |
-| PUT    | /api/todos/{id}/unComplete | Mark todo as uncomplete (If todo belongs to logged in user) | |
 
 Test them using postman or any other rest client.
 
