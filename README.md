@@ -57,6 +57,7 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | GET    | /api/teams/ | Get all teams | |
 | GET    | /api/teams{id} | Get team by id | |
+| GET    | /api/teams/{id}/employees | Get employee list by team |
 | POST   | /api/teams/ | Add new team | [JSON](#createNewTeam) |
 | PUT    | /api/teams/{id} | Update team | [JSON](#updateTeam) |
 | DELETE | /api/teams/{id} | Delete team | |
@@ -68,8 +69,8 @@ The app defines following CRUD APIs.
 | GET    | /api/working/ | Get all workings | |
 | GET    | /api/working/{id} | Get working by id | |
 | GET    | /api/working?employeeId={id} | Get list working by employee id | |
-| POST   | /api/working/ | Add new working | [JSON](#commentcreate) |
-| PUT    | /api/working/{id} | Update working by id | [JSON](#commentupdate) |
+| POST   | /api/working/ | Add new working | [JSON](#createWorking) |
+| PUT    | /api/working/{id} | Update working by id | [JSON](#updateWorking) |
 | DELETE | /api/working/{id} | Delete working by id | |
 
 ### Statistic
@@ -158,6 +159,27 @@ Test them using postman or any other rest client.
 ```json
 {
 	"name": "Dev2"
+}
+```
+
+
+```
+##### <a id="createWorking">Add new working -> /api/working</a>
+```json
+{
+	"employee_id": 1,
+    	"date_time": "2022-06-10", // YYY-MM-dd
+    	"numberHour": 4
+}
+```
+
+```
+##### <a id="updateWorking">Update working -> /api/working/</a>
+```json
+{
+	"employee_id": 2,
+    	"date_time": "2022-06-12", // YYY-MM-dd
+    	"numberHour": 8
 }
 ```
 
