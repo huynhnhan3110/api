@@ -14,11 +14,11 @@ git clone https://github.com/coma123/Spring-Boot-Blog-REST-API.git
 **2. Create Maria database**
 Download Docker and install it
 Run command `docker run -p 3306:3306 -d --name mariadb -eMARIADB_ROOT_PASSWORD=Password123! mariadb:latest `
+
 Access to MariaDB Server by command `mariadb --host 127.0.0.1 -P 3306 --user root -p`
 ```bash
 CREATE DATABASE ems;
 ```
-
 **3. Change Maria username and password **
 
 + open `src/main/resources/application.properties`
