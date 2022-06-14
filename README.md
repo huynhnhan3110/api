@@ -165,7 +165,7 @@ Test them using postman or any other rest client.
 ```json
 {
 	"employee_id": 1,
-    	"date_time": "2022-06-10",`YYY-MM-dd`
+    	"date_time": "2022-06-10",//YYY-MM-dd
     	"numberHour": 4
 }
 ```
@@ -173,7 +173,7 @@ Test them using postman or any other rest client.
 ```json
 {
 	"employee_id": 2,
-    	"date_time": "2022-06-12",`YYY-MM-dd`
+    	"date_time": "2022-06-12",//YYY-MM-dd
     	"numberHour": 8
 }
 ```
