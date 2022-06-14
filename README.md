@@ -46,7 +46,9 @@ The app defines following CRUD APIs.
 | POST    | /api/employees/add?team={id} | Add new employee to existing id team | [JSON](#createEmployeeExistingTeam) |
 | GET    | /api/employees/ | Get all employees | |
 | GET    | /api/employees/{id} | Get employee by id | |
-| PUT    | /api/employees/{id} | Update employee by id | [JSON](#updateEmployeeById) |
+| GET    | /api/employees/search?fullName={fullname} | Search employee by fullname | |
+| PUT    | /api/employees/{id} | Update employee by id (not change team) | [JSON](#updateEmployeeById) |
+| PUT    | /api/employees/{id}/team | Update employee team by employee id | [JSON](#updateEmployeeByIdWithTeam) |
 | DELETE    | /api/employees/{id} | Delete employee by id | |
 
 ### Team
@@ -55,8 +57,8 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | GET    | /api/teams/ | Get all teams | |
 | GET    | /api/teams{id} | Get team by id | |
-| POST   | /api/teams/ | Add new team | |
-| PUT    | /api/teams/{id} | Update team | |
+| POST   | /api/teams/ | Add new team | [JSON](#createNewTeam) |
+| PUT    | /api/teams/{id} | Update team | [JSON](#updateTeam) |
 | DELETE | /api/teams/{id} | Delete team | |
 
 ### Working
@@ -121,71 +123,41 @@ Test them using postman or any other rest client.
 }
 ```
 
-##### <a id="usercreate">Create User -> /api/users</a>
+
+##### <a id="updateEmployeeById">Update Employee by Id (doesn't change team)-> /api/employees/{id}</a>
 ```json
 {
-	"firstName": "Ervin",
-	"lastName": "Howell",
-	"username": "ervin",
-	"password": "password",
-	"email": "ervin.howell@gmail.com",
-	"address": {
-		"street": "Victor Plains",
-		"suite": "Suite 879",
-		"city": "Wisokyburgh",
-		"zipcode": "90566-7771",
-		"geo": {
-			"lat": "-43.9509",
-			"lng": "-34.4618"
-		}
-	},
-	"phone": "010-692-6593 x09125",
-	"website": "http://erwinhowell.com",
-	"company": {
-		"name": "Deckow-Crist",
-		"catchPhrase": "Proactive didactic contingency",
-		"bs": "synergize scalable supply-chains"
-	}
+	"fullName": "Huynh Huu Nhan",
+    	"age": 20,
+    	"sex": "Male",
+    	"address": "Vinh Long",
+    	"position": "Enginer",
+    	"moneyPerHour": 100000
+}
+
+```
+##### <a id="updateEmployeeByIdWithTeam">Update Employee Team by Employee Id -> /api/employees/{id}/team</a>
+```json
+{
+	"teamId": 2, // the team_id want to change
+	"name": "Dev"
 }
 ```
 
-##### <a id="userupdate">Update User -> /api/users/{username}</a>
+
+```
+##### <a id="createNewTeam">Add new team -> /api/teams</a>
 ```json
 {
-	"firstName": "Ervin",
-	"lastName": "Howell",
-	"username": "ervin",
-	"password": "updatedpassword",
-	"email": "ervin.howell@gmail.com",
-	"address": {
-		"street": "Victor Plains",
-		"suite": "Suite 879",
-		"city": "Wisokyburgh",
-		"zipcode": "90566-7771",
-		"geo": {
-			"lat": "-43.9509",
-			"lng": "-34.4618"
-		}
-	},
-	"phone": "010-692-6593 x09125",
-	"website": "http://erwinhowell.com",
-	"company": {
-		"name": "Deckow-Crist",
-		"catchPhrase": "Proactive didactic contingency",
-		"bs": "synergize scalable supply-chains"
-	}
+	"name": "Dev"
 }
 ```
 
-##### <a id="updateEmployeeById">Update Employee by Id -> /api/employees/{id}</a>
+```
+##### <a id="updateTeam">Update team -> /api/teams/{id}</a>
 ```json
 {
-    "fullName": "Huynh Huu Nhan",
-    "age": 20,
-    "sex": "Male",
-    "address": "Vinh Long",
-    "position": "Enginer",
-    "moneyPerHour": 100000
+	"name": "Dev2"
 }
 ```
 
