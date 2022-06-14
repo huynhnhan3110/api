@@ -42,7 +42,7 @@ The app defines following CRUD APIs.
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| POST    | /api/employees/ | Add new employee and create new team | |
+| POST    | /api/employees/ | Add new employee and create new team | [JSON](#createEmployee) |
 | POST    | /api/employees/add?team={id} | Add new employee to existing id team | |
 | GET    | /api/employees/ | Get all employees | |
 | GET    | /api/employees/{id} | Get employee by id | |
@@ -93,14 +93,18 @@ Test them using postman or any other rest client.
 
 ## Sample Valid JSON Request Bodys
 
-##### <a id="signup">Sign Up -> /api/auth/signup</a>
+##### <a id="createEmployee">Create employee -> /api/employees</a>
 ```json
 {
-	"firstName": "Leanne",
-	"lastName": "Graham",
-	"username": "leanne",
-	"password": "password",
-	"email": "leanne.graham@gmail.com"
+	"fullName": "Huynh Huu Nhan",
+    	"age": 20,
+    	"sex": "Male",
+    	"address": "Vinh Long",
+    	"position": "Enginer",
+    	"moneyPerHour": 150000,
+	    "team": {
+		"name": "E3C"
+	    }
 }
 ```
 
