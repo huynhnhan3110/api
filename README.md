@@ -20,6 +20,7 @@ Run command `docker run -p 3306:3306 -d --name mariadb -eMARIADB_ROOT_PASSWORD=P
 Access to MariaDB Server by command `mariadb --host 127.0.0.1 -P 3306 --user root -p`
 
 `CREATE DATABASE ems;`
+
 **3. Change Maria username and password**
 
 + open `src/main/resources/application.properties`
