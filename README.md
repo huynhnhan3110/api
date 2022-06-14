@@ -140,7 +140,7 @@ Test them using postman or any other rest client.
 ##### <a id="updateEmployeeByIdWithTeam">Update Employee Team by Employee Id -> /api/employees/{id}/team</a>
 ```json
 {
-	"teamId": 2, // the team_id want to change
+	"teamId": 2,
 	"name": "Dev"
 }
 ```
