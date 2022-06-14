@@ -44,43 +44,41 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | POST    | /api/employees/ | Add new employee and create new team | |
 | POST    | /api/employees/add?team={id} | Add new employee to existing id team | |
-| GET    | /api/employees/ | Get all employee | |
+| GET    | /api/employees/ | Get all employees | |
 | GET    | /api/employees/{id} | Get employee by id | |
 | PUT    | /api/employees/{id} | Update employee by id | |
 | DELETE    | /api/employees/{id} | Delete employee by id | |
 
-### Posts
+### Team
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| GET    | /api/posts | Get all posts | |
-| GET    | /api/posts/{id} | Get post by id | |
-| POST   | /api/posts | Create new post (By logged in user) | [JSON](#postcreate) |
-| PUT    | /api/posts/{id} | Update post (If post belongs to logged in user or logged in user is admin) | [JSON](#postupdate) |
-| DELETE | /api/posts/{id} | Delete post (If post belongs to logged in user or logged in user is admin) | |
+| GET    | /api/teams | Get all teams | |
+| GET    | /api/teams{id} | Get team by id | |
+| POST   | /api/teams | Add new team | |
+| PUT    | /api/teams/{id} | Update team | |
+| DELETE | /api/teams/{id} | Delete team | |
 
-### Comments
-
-| Method | Url | Description | Sample Valid Request Body |
-| ------ | --- | ----------- | ------------------------- |
-| GET    | /api/posts/{postId}/comments | Get all comments which belongs to post with id = postId | |
-| GET    | /api/posts/{postId}/comments/{id} | Get comment by id if it belongs to post with id = postId | |
-| POST   | /api/posts/{postId}/comments | Create new comment for post with id = postId (By logged in user) | [JSON](#commentcreate) |
-| PUT    | /api/posts/{postId}/comments/{id} | Update comment by id if it belongs to post with id = postId (If comment belongs to logged in user or logged in user is admin) | [JSON](#commentupdate) |
-| DELETE | /api/posts/{postId}/comments/{id} | Delete comment by id if it belongs to post with id = postId (If comment belongs to logged in user or logged in user is admin) | |
-
-### Albums
+### Working
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| GET    | /api/albums | Get all albums | |
-| GET    | /api/albums/{id} | Get album by id | |
-| POST   | /api/albums | Create new album (By logged in user) | [JSON](#albumcreate) |
-| PUT    | /api/albums/{id} | Update album (If album belongs to logged in user or logged in user is admin) | [JSON](#albumupdate) |
-| DELETE | /api/albums/{id} | Delete album (If album belongs to logged in user or logged in user is admin) | |
-| GET    | /api/albums/{id}/photos | Get all photos which belongs to album with id = id | |
+| GET    | /api/working/ | Get all workings | |
+| GET    | /api/working/{id} | Get working by id | |
+| GET    | /api/working?employeeId={id} | Get list working by employee id | |
+| POST   | /api/working/ | Add new working | [JSON](#commentcreate) |
+| PUT    | /api/working/{id} | Update working by id | [JSON](#commentupdate) |
+| DELETE | /api/working/{id} | Delete working by id | |
 
-### Photos
+### Statistic
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /api/statistics | Get all statistics | |
+| GET    | /api/statistics?employeeId={id} | Get statistic by employee id | |
+| POST   | /api/statistics | Calculate statistics and save to db | |
+
+### Advance
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
