@@ -146,7 +146,6 @@ Test them using postman or any other rest client.
 ```
 
 
-```
 ##### <a id="createNewTeam">Add new team -> /api/teams</a>
 ```json
 {
@@ -154,7 +153,6 @@ Test them using postman or any other rest client.
 }
 ```
 
-```
 ##### <a id="updateTeam">Update team -> /api/teams/{id}</a>
 ```json
 {
@@ -163,103 +161,21 @@ Test them using postman or any other rest client.
 ```
 
 
-```
 ##### <a id="createWorking">Add new working -> /api/working</a>
 ```json
 {
 	"employee_id": 1,
-    	"date_time": "2022-06-10", // YYY-MM-dd
+    	"date_time": "2022-06-10",`YYY-MM-dd`
     	"numberHour": 4
 }
-```
-
 ```
 ##### <a id="updateWorking">Update working -> /api/working/</a>
 ```json
 {
 	"employee_id": 2,
-    	"date_time": "2022-06-12", // YYY-MM-dd
+    	"date_time": "2022-06-12",`YYY-MM-dd`
     	"numberHour": 8
 }
 ```
 
-##### <a id="postcreate">Create Post -> /api/posts</a>
-```json
-{
-	"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-	"body": "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
-}
-```
-
-##### <a id="postupdate">Update Post -> /api/posts/{id}</a>
-```json
-{
-	"title": "UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED",
-	"body": "UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED "
-}
-```
-
-##### <a id="commentcreate">Create Comment -> /api/posts/{postId}/comments</a>
-```json
-{
-	"body": "laudantium enim quasi est quidem magnam voluptate ipsam eos tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium"
-}
-```
-
-##### <a id="commentupdate">Update Comment -> /api/posts/{postId}/comments/{id}</a>
-```json
-{
-	"body": "UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED UPDATED "
-}
-```
-
-##### <a id="albumcreate">Create Album -> /api/albums</a>
-```json
-{
-	"title": "quidem molestiae enim"
-}
-```
-
-##### <a id="albumupdate">Update Album -> /api/albums/{id}</a>
-```json
-{
-	"title": "quidem molestiae enim UPDATED"
-}
-```
-
-##### <a id="photocreate">Create Photo -> /api/photos</a>
-```json
-{
-	"title": "accusamus beatae ad facilis cum similique qui sunt",
-	"url": "https://via.placeholder.com/600/92c952",
-	"thumbnailUrl": "https://via.placeholder.com/150/92c952",
-	"albumId": 2
-}
-```
-
-##### <a id="photoupdate">Update Photo -> /api/photos{id}</a>
-```json
-{
-	"title": "accusamus beatae ad facilis ",
-	"url": "https://via.placeholder.com/600/771796",
-	"thumbnailUrl": "https://via.placeholder.com/150/771796",
-	"albumId": 4
-}
-```
-
-##### <a id="todocreate">Create Todo -> /api/todos</a>
-```json
-{
-	"title": "delectus aut autem",
-	"completed": false
-}
-```
-
-##### <a id="todoupdate">Update Todo -> /api/todos{id}</a>
-```json
-{
-	"title": "delectus aut autem Updated",
-	"completed": true
-}
-```
 ![segment](https://api.segment.io/v1/pixel/track?data=ewogICJ3cml0ZUtleSI6ICJwcDJuOTU4VU1NT21NR090MWJXS0JQd0tFNkcydW51OCIsCiAgInVzZXJJZCI6ICIxMjNibG9nYXBpMTIzIiwKICAiZXZlbnQiOiAiQmxvZ0FwaSB2aXNpdGVkIiwKICAicHJvcGVydGllcyI6IHsKICAgICJzdWJqZWN0IjogIkJsb2dBcGkgdmlzaXRlZCIsCiAgICAiZW1haWwiOiAiY29tcy5zcHVyc0BnbWFpbC5jb20iCiAgfQp9)
