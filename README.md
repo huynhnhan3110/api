@@ -68,7 +68,7 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | GET    | /api/working/ | Get all workings | |
 | GET    | /api/working/{id} | Get working by id | |
-| GET    | /api/working?employeeId={id} | Get list working by employee id | |
+| GET    | /api/working?employeeId={id} | Get working list by employee id | |
 | POST   | /api/working/ | Add new working | [JSON](#createWorking) |
 | PUT    | /api/working/{id} | Update working by id | [JSON](#updateWorking) |
 | DELETE | /api/working/{id} | Delete working by id | |
