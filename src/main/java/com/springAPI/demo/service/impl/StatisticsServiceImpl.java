@@ -19,7 +19,6 @@ public class StatisticsServiceImpl implements StatisticsService{
 	private WorkingRepository	workingRepository;
 	private StatisticRepository statisticRepository;
 	
-	// get working list by employee id
 	@Autowired
 	private WorkingServiceImpl workingService = new WorkingServiceImpl(workingRepository);
 	
@@ -75,10 +74,6 @@ public class StatisticsServiceImpl implements StatisticsService{
 		Statistics statisticsByEmployee = new Statistics((int) id, totalHour*employeeRepository.getById(id).getMoneyPerHour());
 		return statisticsByEmployee;
 	}
-
-	
-
-
 
 	
 	

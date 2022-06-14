@@ -44,7 +44,7 @@ public class WorkingServiceImpl implements WorkingService{
 	@Override
 	public void deleteWorking(long id) {
 		Working existingWorking = workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id));
-		workingRepository.delete(existingWorking);
+		workingRepository.deleteById(existingWorking.getId());
 	}
 	@Override
 	public List<Working> getWorkingByEmployee(long id) {
