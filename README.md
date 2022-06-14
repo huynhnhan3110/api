@@ -87,8 +87,8 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | GET    | /api/advances | Get all advances | |
 | GET    | /api/advances/{id} | Get advance by id | |
-| POST   | /api/advances | Create new advance | [JSON](#photocreate) |
-| PUT    | /api/advances/{id} | Update advance by id | [JSON](#photoupdate) |
+| POST   | /api/advances | Create new advance | [JSON](#createAdvance) |
+| PUT    | /api/advances/{id} | Update advance by id | [JSON](#updateAdvance) |
 | DELETE | /api/advances/{id} | Delete advance by id | |
 
 
@@ -177,5 +177,20 @@ Test them using postman or any other rest client.
     	"numberHour": 8
 }
 ```
-
+##### <a id="createAdvance">Create advance -> /api/advances/</a>
+```json
+{
+	"employee_id": 1,
+    	"date_time": "2022-1-14",
+    	"money": 20000
+}
+```
+##### <a id="updateAdvance">Update advance -> /api/advances/</a>
+```json
+{
+	"employee_id": 2,
+    	"date_time": "2022-1-17",
+    	"money": 10000
+}
+```
 ![segment](https://api.segment.io/v1/pixel/track?data=ewogICJ3cml0ZUtleSI6ICJwcDJuOTU4VU1NT21NR090MWJXS0JQd0tFNkcydW51OCIsCiAgInVzZXJJZCI6ICIxMjNibG9nYXBpMTIzIiwKICAiZXZlbnQiOiAiQmxvZ0FwaSB2aXNpdGVkIiwKICAicHJvcGVydGllcyI6IHsKICAgICJzdWJqZWN0IjogIkJsb2dBcGkgdmlzaXRlZCIsCiAgICAiZW1haWwiOiAiY29tcy5zcHVyc0BnbWFpbC5jb20iCiAgfQp9)
