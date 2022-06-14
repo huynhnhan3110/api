@@ -43,10 +43,10 @@ The app defines following CRUD APIs.
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
 | POST    | /api/employees/ | Add new employee and create new team | [JSON](#createEmployee) |
-| POST    | /api/employees/add?team={id} | Add new employee to existing id team | |
+| POST    | /api/employees/add?team={id} | Add new employee to existing id team | [JSON](#createEmployeeExistingTeam) |
 | GET    | /api/employees/ | Get all employees | |
 | GET    | /api/employees/{id} | Get employee by id | |
-| PUT    | /api/employees/{id} | Update employee by id | |
+| PUT    | /api/employees/{id} | Update employee by id | [JSON](#updateEmployeeById) |
 | DELETE    | /api/employees/{id} | Delete employee by id | |
 
 ### Team
@@ -93,7 +93,7 @@ Test them using postman or any other rest client.
 
 ## Sample Valid JSON Request Bodys
 
-##### <a id="createEmployee">Create employee -> /api/employees</a>
+##### <a id="createEmployee">Create employee with new team -> /api/employees</a>
 ```json
 {
 	"fullName": "Huynh Huu Nhan",
@@ -108,11 +108,16 @@ Test them using postman or any other rest client.
 }
 ```
 
-##### <a id="signin">Log In -> /api/auth/signin</a>
+
+##### <a id="createEmployeeExistingTeam">Create employee with existing team -> /api/employees/add?team=1</a>
 ```json
 {
-	"usernameOrEmail": "leanne",
-	"password": "password"
+	"fullName": "Huynh Huu Nhan",
+    	"age": 20,
+    	"sex": "Male",
+    	"address": "Vinh Long",
+    	"position": "Enginer",
+    	"moneyPerHour": 150000
 }
 ```
 
@@ -172,20 +177,15 @@ Test them using postman or any other rest client.
 }
 ```
 
-##### <a id="userinfoupdate">Update User Profile -> /api/users/setOrUpdateInfo</a>
+##### <a id="updateEmployeeById">Update Employee by Id -> /api/employees/{id}</a>
 ```json
 {
-	"street": "Douglas Extension",
-	"suite": "Suite 847",
-	"city": "McKenziehaven",
-	"zipcode": "59590-4157",
-	"companyName": "Romaguera-Jacobson",
-	"catchPhrase": "Face to face bifurcated interface",
-	"bs": "e-enable strategic applications",
-	"website": "http://ramiro.info",
-	"phone": "1-463-123-4447",
-	"lat": "-68.6102",
-	"lng": "-47.0653"
+    "fullName": "Huynh Huu Nhan",
+    "age": 20,
+    "sex": "Male",
+    "address": "Vinh Long",
+    "position": "Enginer",
+    "moneyPerHour": 100000
 }
 ```
 
