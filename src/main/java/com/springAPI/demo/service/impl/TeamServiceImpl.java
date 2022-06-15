@@ -36,8 +36,10 @@ public class TeamServiceImpl implements TeamService{
 		List<Employee> allEmployees = employeeRepository.findAll();
 		List<Employee> filteredEmployees = new ArrayList<Employee>();
 		for(Employee e : allEmployees) {
-			if(e.getTeam().getTeamId() == (int)id) {
-				filteredEmployees.add(e);
+			if(e.getTeam() != null) {
+				if(e.getTeam().getTeamId() == (int)id) {
+					filteredEmployees.add(e);
+				}
 			}
 		}
 		return filteredEmployees;
@@ -57,9 +59,16 @@ public class TeamServiceImpl implements TeamService{
 	}
 
 	@Override
-	public void deleteTeam(long id) {
+	public String deleteTeam(long id) {
 		Team existingTeam = teamRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Team not exist with id: "+ id));
-		teamRepository.delete(existingTeam);
+		List<Employee> listEmployee = getEmployeesByTeam(id);
+		if(listEmployee.isEmpty()) {
+			teamRepository.delete(existingTeam);
+			return new String("delete team success");
+		} else {
+			return new String("please remove team in employee first!");
+		}
+		
 	}
 	
 

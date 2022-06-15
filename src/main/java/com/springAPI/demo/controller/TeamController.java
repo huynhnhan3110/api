@@ -53,7 +53,6 @@ public class TeamController {
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteTeam(@PathVariable("id") long id) {
-		teamService.deleteTeam(id);
-		return new ResponseEntity<String>("Delete team success", HttpStatus.OK);
+		return new ResponseEntity<String>(teamService.deleteTeam(id), HttpStatus.OK);
 	}
 }

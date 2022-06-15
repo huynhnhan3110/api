@@ -10,6 +10,6 @@ public interface TeamService {
 	List<Team> getAllTeams();
 	Team getTeamById(long id);
 	Team updateTeam(Team team, long id);
-	void deleteTeam(long id);
+	String deleteTeam(long id);
 	List<Employee> getEmployeesByTeam(long id);
 }
