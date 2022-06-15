@@ -11,8 +11,6 @@ public interface EmployeeService {
 	Employee getEmployeeById(long id);
 	Employee updateEmployee(Employee employee, long id);
 	void deleteEmployee(long id);
-
-	Employee saveEmployeeToExistTeam(long teamId, Employee employee);
 	Employee updateEmployeeTeam(long id, Team team);
 	List<Employee> searchEmployees(String fullName, String address, String position);
 }

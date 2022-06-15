@@ -47,8 +47,8 @@ The app defines following CRUD APIs.
 | GET    | /api/employees?page=3&size=2&sort=DESC | Get all employees with pagination by pageNum (default = 0), pageSize (default = 5), sortBy(default = ASC) | |
 | GET    | /api/employees/{id} | Get employee by id | |
 | GET    | /api/employees/search?full_name={fullname} | Search employee by fullname | |
-| PUT    | /api/employees/{id} | Update employee by id | [JSON](#updateEmployeeById) |
-| DELETE    | /api/employees/{id} | Delete employee by id | |
+| PUT    | /api/employees/update/{id} | Update employee by id | [JSON](#updateEmployeeById) |
+| DELETE    | /api/employees/delete/{id} | Delete employee by id | |
 
 ### Team
 

@@ -40,14 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	
 	@Override
-	public Employee saveEmployeeToExistTeam(long teamId, Employee employee) {
-		Team team = teamRepository.findById(teamId).orElseThrow(() -> new ResourceNotFound("Team not exist with id: "+ teamId));
-		employee.setTeam(team);
-		return employeeRepository.save(employee);
-	}
-
-	
-	@Override
 	public List<Employee> getAllEmployees(int pageNo, int pageSize, String sort) {
 	    Sort sortable = null;
 	    if (sort.equals("ASC")) {

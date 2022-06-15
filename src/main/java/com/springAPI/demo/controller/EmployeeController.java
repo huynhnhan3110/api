@@ -32,11 +32,7 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
 	}
 
-	@PostMapping("/add")
-	public ResponseEntity<Employee> saveEmployeeToExistTeam(@RequestParam (value = "team") long teamId, @RequestBody Employee employee) {
-		return new ResponseEntity<Employee>(employeeService.saveEmployeeToExistTeam(teamId,employee), HttpStatus.CREATED);
-	}
-
+	
 	@GetMapping
 	public List<Employee> getAllEmployees(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
 		      @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
@@ -49,7 +45,7 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id),HttpStatus.NOT_FOUND);
 	}
 
-	@PutMapping("{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee) {
 		return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
 	}
@@ -59,7 +55,7 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(employeeService.updateEmployeeTeam(id, team), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id) {
 		employeeService.deleteEmployee(id);
 		return new ResponseEntity<String>("Employee delete success", HttpStatus.OK);
