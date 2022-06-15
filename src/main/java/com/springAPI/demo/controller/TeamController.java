@@ -46,12 +46,12 @@ public class TeamController {
 		return teamService.getEmployeesByTeam(id);
 	}
 
-	@PutMapping("{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<Team> updateTeam(@PathVariable("id") long id, @RequestBody Team team) {
 		return new ResponseEntity<Team>(teamService.updateTeam(team, id), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteTeam(@PathVariable("id") long id) {
 		teamService.deleteTeam(id);
 		return new ResponseEntity<String>("Delete team success", HttpStatus.OK);

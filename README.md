@@ -58,8 +58,8 @@ The app defines following CRUD APIs.
 | GET    | /api/teams{id} | Get team by id | |
 | GET    | /api/teams/{id}/employees | Get employee list by team |
 | POST   | /api/teams/ | Add new team | [JSON](#createNewTeam) |
-| PUT    | /api/teams/{id} | Update team | [JSON](#updateTeam) |
-| DELETE | /api/teams/{id} | Delete team | |
+| PUT    | /api/teams/update/{id} | Update team | [JSON](#updateTeam) |
+| DELETE | /api/teams/delete/{id} | Delete team | |
 
 ### Working
 
@@ -69,8 +69,8 @@ The app defines following CRUD APIs.
 | GET    | /api/working/{id} | Get working by id | |
 | GET    | /api/working?employeeId={id} | Get working list by employee id | |
 | POST   | /api/working/ | Add new working | [JSON](#createWorking) |
-| PUT    | /api/working/{id} | Update working by id | [JSON](#updateWorking) |
-| DELETE | /api/working/{id} | Delete working by id | |
+| PUT    | /api/working/update/{id} | Update working by id | [JSON](#updateWorking) |
+| DELETE | /api/working/delete/{id} | Delete working by id | |
 
 ### Statistic
 
@@ -87,8 +87,8 @@ The app defines following CRUD APIs.
 | GET    | /api/advances | Get all advances | |
 | GET    | /api/advances/{id} | Get advance by id | |
 | POST   | /api/advances | Create new advance | [JSON](#createAdvance) |
-| PUT    | /api/advances/{id} | Update advance by id | [JSON](#updateAdvance) |
-| DELETE | /api/advances/{id} | Delete advance by id | |
+| PUT    | /api/advances/update/{id} | Update advance by id | [JSON](#updateAdvance) |
+| DELETE | /api/advances/delete/{id} | Delete advance by id | |
 
 
 Test them using postman or any other rest client.

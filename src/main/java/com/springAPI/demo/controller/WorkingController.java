@@ -43,12 +43,12 @@ public class WorkingController {
 		return new ResponseEntity<List<Working>>(workingService.getWorkingByEmployee(employeeId), HttpStatus.OK);
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<Working> updateWorking(@PathVariable("id") long id, @RequestBody Working working) {
 		return new ResponseEntity<Working>(workingService.updateWorking(working, id), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteWorking(@PathVariable("id") long id) {
 		workingService.deleteWorking(id);
 		return new ResponseEntity<String>("Delete working success", HttpStatus.OK);

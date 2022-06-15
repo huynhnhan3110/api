@@ -39,13 +39,13 @@ public class AdvanceController {
 	public  ResponseEntity<Advance> getAdvanceById(@PathVariable("id") long id) {
 		return new ResponseEntity<Advance>(advanceService.getAdvanceById(id), HttpStatus.OK);
 	}
-	@DeleteMapping("{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteAdvance(@PathVariable("id") long id) {
 		advanceService.deleteAdvance(id);
 		return new ResponseEntity<String>("Delete advance success", HttpStatus.OK);
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<Advance> updateAdvance(@PathVariable("id") long id, @RequestBody Advance advance) {
 		return new ResponseEntity<Advance>(advanceService.updateAdvance(id, advance), HttpStatus.OK);
 	}
