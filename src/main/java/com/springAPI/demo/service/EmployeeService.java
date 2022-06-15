@@ -7,7 +7,7 @@ import com.springAPI.demo.model.Team;
 
 public interface EmployeeService {
 	Employee saveEmployee(Employee employee);
-	List<Employee> getAllEmployees();
+	List<Employee> getAllEmployees(int pagaeNo, int pageSize, String sort);
 	Employee getEmployeeById(long id);
 	Employee updateEmployee(Employee employee, long id);
 	void deleteEmployee(long id);

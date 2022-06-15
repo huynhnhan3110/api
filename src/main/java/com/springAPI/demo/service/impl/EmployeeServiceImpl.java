@@ -1,10 +1,15 @@
 package com.springAPI.demo.service.impl;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.repository.TeamRepository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.springAPI.demo.exception.ResourceNotFound;
@@ -37,10 +42,17 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	
 	@Override
-	public List<Employee> getAllEmployees() {
-			List<Employee> liste = employeeRepository.findAll();
-			System.out.println(liste);
-			return liste;
+	public List<Employee> getAllEmployees(int pageNo, int pageSize, String sort) {
+	    Sort sortable = null;
+	    if (sort.equals("ASC")) {
+	      sortable = Sort.by("id").ascending();
+	    }
+	    if (sort.equals("DESC")) {
+	      sortable = Sort.by("id").descending();
+	    }
+		PageRequest paging = PageRequest.of(pageNo, pageSize,sortable);
+		Page<Employee> pagedResult = employeeRepository.findAll(paging);
+		return pagedResult.toList();
 	}
 
 	
