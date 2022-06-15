@@ -8,7 +8,7 @@ Build Restful CRUD API for a web using Spring Boot, MariaDB, JPA and Hibernate.
 **1. Clone the application**
 
 ```bash
-git clone https://github.com/coma123/Spring-Boot-Blog-REST-API.git
+git clone https://github.com/huynhnhan3110/api.git
 ```
 
 **2. Create Maria database**
