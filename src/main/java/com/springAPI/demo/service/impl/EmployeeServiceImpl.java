@@ -84,8 +84,17 @@ public class EmployeeServiceImpl implements EmployeeService{
 		existingEmployee.setStartDate(employee.getStartDate());
 		existingEmployee.setSex(employee.getSex());
 		existingEmployee.setPosition(employee.getPosition());
-		employeeRepository.save(existingEmployee);
-		return existingEmployee;
+		
+		Optional<Team> team = teamRepository.findById(employee.getTeam().getTeamId());
+		System.out.println(team.get().getTeamId());
+		if(team.isPresent()) {
+			System.out.println("tồn tại");
+			existingEmployee.setTeam(team.get());
+			return employeeRepository.save(existingEmployee);
+			
+		} else {
+			throw new ResourceNotFound("Team not exist");
+		}
 	}
 	
 	@Override

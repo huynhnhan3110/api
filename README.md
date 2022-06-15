@@ -44,11 +44,10 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | POST   | /api/employees/ | Add new employee to existing id team | [JSON](#createEmployeeExistingTeam) |
 | GET    | /api/employees/ | Get all employees | |
-| GET    | /api/employees?page=3&size=2&sort=DESC | Get all employees with pagination by pageNum, pageSize, sortBy | |
+| GET    | /api/employees?page=3&size=2&sort=DESC | Get all employees with pagination by pageNum (default = 0), pageSize (default = 5), sortBy(default = ASC) | |
 | GET    | /api/employees/{id} | Get employee by id | |
 | GET    | /api/employees/search?full_name={fullname} | Search employee by fullname | |
-| PUT    | /api/employees/{id} | Update employee by id (not change team) | [JSON](#updateEmployeeById) |
-| PUT    | /api/employees/{id}/team | Update employee team by employee id | [JSON](#updateEmployeeByIdWithTeam) |
+| PUT    | /api/employees/{id} | Update employee by id | [JSON](#updateEmployeeById) |
 | DELETE    | /api/employees/{id} | Delete employee by id | |
 
 ### Team
@@ -112,24 +111,21 @@ Test them using postman or any other rest client.
 }
 ```
 
-##### <a id="updateEmployeeById">Update Employee by Id (doesn't change team)-> /api/employees/{id}</a>
+##### <a id="updateEmployeeById">Update Employee by Id -> /api/employees/{id}</a>
 ```json
 {
-	"fullName": "Huynh Huu Nhan",
-    	"age": 20,
-    	"sex": "Male",
-    	"address": "Vinh Long",
-    	"position": "Enginer",
-    	"moneyPerHour": 100000
-}
+	"fullName": "Huynh Huu Nha7n",
+    "age": 20,
+    "sex": "Male",
+    "address": "Vinh Long",
+    "phoneNumber": "0943836766",
+    "startDate": "2022-06-15",
+    "position": null,
+    "moneyPerHour": 150000.0,
+    "team": {
+        "teamId": 2
+    }
 
-```
-##### <a id="updateEmployeeByIdWithTeam">Update Employee Team by Employee Id -> /api/employees/{id}/team</a>
-```json
-{
-	"teamId": 2,
-	"name": "Dev"
-}
 ```
 
 
