@@ -29,7 +29,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	// Create Employee
 	@Override
 	public Employee saveEmployee(Employee employee) {
-		return employeeRepository.save(employee);
+		Optional<Team> team = teamRepository.findById(employee.getTeam().getTeamId());
+		if(team.isPresent()) {
+			employee.setTeam(team.get());
+			return employeeRepository.save(employee);
+		} else {
+			throw  new ResourceNotFound("Team not exist");
+		}
 	}
 
 	
@@ -74,6 +80,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 		existingEmployee.setAddress(employee.getAddress());
 		existingEmployee.setAge(employee.getAge());
 		existingEmployee.setMoneyPerHour(employee.getMoneyPerHour());
+		existingEmployee.setPhoneNumber(employee.getPhoneNumber());
+		existingEmployee.setStartDate(employee.getStartDate());
 		existingEmployee.setSex(employee.getSex());
 		existingEmployee.setPosition(employee.getPosition());
 		employeeRepository.save(existingEmployee);
