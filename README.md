@@ -99,15 +99,16 @@ Test them using postman or any other rest client.
 ##### <a id="createEmployeeExistingTeam">Create employee with  with existing team-> /api/employees</a>
 ```json
 {
-	"fullName": "Huynh Huu Nhan",
-    	"age": 20,
-    	"sex": "Male",
-    	"address": "Vinh Long",
-    	"position": "Enginer",
-    	"moneyPerHour": 150000,
-	    "team": {
-		"teamId": 1
-	    }
+	"fullName": "Huynh Huu Nha3n",
+    "age": 20,
+    "sex": "Male",
+    "address": "Vinh Long",
+    "moneyPerHour": 150000,
+    "phoneNumber": "0943836766",
+    "startDate": "2022-06-15",
+    "team":  {
+        "teamId": 3
+    }
 }
 ```
 
