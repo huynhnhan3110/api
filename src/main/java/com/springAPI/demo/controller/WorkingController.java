@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springAPI.demo.model.Working;
 import com.springAPI.demo.service.WorkingService;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/working")
 public class WorkingController {
