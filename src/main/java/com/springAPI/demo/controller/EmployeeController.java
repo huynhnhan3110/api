@@ -1,6 +1,7 @@
 package com.springAPI.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +36,10 @@ public class EmployeeController {
 
 	
 	@GetMapping
-	public List<Employee> getAllEmployees(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
+	public Map<String, Object> getAllEmployees(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
 		      @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
 		      @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort) {
-		return employeeService.getAllEmployees(page, size,sort);
+		return employeeService.getAllEmployees(page, size, sort);
 	}
 	
 	@GetMapping("{id}")
@@ -66,8 +67,7 @@ public class EmployeeController {
 	public ResponseEntity<List<Employee>> searchEmployees(
 			@RequestParam(required = false, defaultValue = "") String full_name,
 			@RequestParam(required = false, defaultValue = "") String address,
-			@RequestParam(required = false, defaultValue ="") String position
-			) {
+			@RequestParam(required = false, defaultValue ="") String position){
 		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(full_name, address, position), HttpStatus.OK);
 	}
 }

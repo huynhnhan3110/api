@@ -1,6 +1,8 @@
 package com.springAPI.demo.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.springAPI.demo.model.Team;
@@ -39,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	
 	@Override
-	public List<Employee> getAllEmployees(int pageNo, int pageSize, String sort) {
+	public Map<String, Object> getAllEmployees(int pageNo, int pageSize, String sort) {
 	    Sort sortable = null;
 	    if (sort.equals("ASC")) {
 	      sortable = Sort.by("id").ascending();
@@ -47,9 +49,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	    if (sort.equals("DESC")) {
 	      sortable = Sort.by("id").descending();
 	    }
-		PageRequest paging = PageRequest.of(pageNo, pageSize,sortable);
+		PageRequest paging = PageRequest.of(pageNo-1, pageSize,sortable);
 		Page<Employee> pagedResult = employeeRepository.findAll(paging);
-		return pagedResult.toList();
+		System.out.println(pagedResult.getTotalElements());
+		Map<String, Object> mapResult = new HashMap<>();
+		mapResult.put("total", pagedResult.getTotalElements());
+		mapResult.put("data", pagedResult.toList());
+		return mapResult;
 	}
 
 	
@@ -102,8 +108,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeRepository.deleteById(existingEmployee.getId());
 	}
 	@Override
-	public
-	List<Employee> searchEmployees(String full_name, String address, String position) {
+	public List<Employee> searchEmployees(String full_name, String address, String position) {
+		System.out.println(full_name);
 		return employeeRepository.searchEmployees(full_name,address,position);
 	}
 
