@@ -1,7 +1,5 @@
 package com.springAPI.demo.model;
 
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;

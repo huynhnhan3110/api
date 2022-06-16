@@ -27,18 +27,18 @@ public class AdvanceServiceImpl implements AdvanceService{
 
 	@Override
 	public Advance getAdvanceById(long id) {
-		return advanceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Advance not exist with id: "+id));
+		return advanceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Advance not exist with id: "+id, "failed"));
 	}
 
 	@Override
 	public void deleteAdvance(long id) {
-		Advance existingAdvance = advanceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Advance not exist with id: "+id));
+		Advance existingAdvance = advanceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Advance not exist with id: "+id,"failed"));
 		advanceRepository.deleteById(existingAdvance.getId());
 	}
 
 	@Override
 	public Advance updateAdvance(long id, Advance advance) {
-		Advance existingAdvance = advanceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Advance not exist with id: "+id));
+		Advance existingAdvance = advanceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Advance not exist with id: "+id,"failed"));
 		existingAdvance.setDate_time(advance.getDate_time());
 		existingAdvance.setEmployee_id(advance.getEmployee_id());
 		existingAdvance.setMoney(advance.getMoney());

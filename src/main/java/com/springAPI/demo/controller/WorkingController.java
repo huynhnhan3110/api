@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.model.Working;
 import com.springAPI.demo.service.WorkingService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -49,8 +50,8 @@ public class WorkingController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteWorking(@PathVariable("id") long id) {
+	public ResponseEntity<Message> deleteWorking(@PathVariable("id") long id) {
 		workingService.deleteWorking(id);
-		return new ResponseEntity<String>("Delete working success", HttpStatus.OK);
+		return new ResponseEntity<Message>(new Message("Delete working success", "success"), HttpStatus.OK);
 	}
 }

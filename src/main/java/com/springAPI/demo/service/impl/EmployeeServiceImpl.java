@@ -1,6 +1,5 @@
 package com.springAPI.demo.service.impl;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 			employee.setTeam(team.get());
 			return employeeRepository.save(employee);
 		} else {
-			throw  new ResourceNotFound("Team not exist");
+			throw  new ResourceNotFound("Team not exist","failed");
 		}
 	}
 
@@ -60,14 +59,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if(employee.isPresent()) {
 			return employee.get();
 		} else {
-			throw new ResourceNotFound("Employee not exist with id:" + id);
+			throw new ResourceNotFound("Employee not exist with id:" + id,"failed");
 		}
 	}
 	
 	
 	@Override
 	public Employee updateEmployee(Employee employee, long id) {
-		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id));
+		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id,"failed"));
 		existingEmployee.setFullName(employee.getFullName());
 		existingEmployee.setAddress(employee.getAddress());
 		existingEmployee.setAge(employee.getAge());
@@ -85,20 +84,20 @@ public class EmployeeServiceImpl implements EmployeeService{
 			return employeeRepository.save(existingEmployee);
 			
 		} else {
-			throw new ResourceNotFound("Team not exist");
+			throw new ResourceNotFound("Team not exist","failed");
 		}
 	}
 	
 	@Override
 	public Employee updateEmployeeTeam(long id, Team team) {
-		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id));
+		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id,"failed"));
 		existingEmployee.setTeam(team);
 		employeeRepository.save(existingEmployee);
 		return existingEmployee;
 	}
 	@Override
 	public void deleteEmployee(long id) {
-		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id));
+		Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id,"failed"));
 		existingEmployee.removeTeam();
 		employeeRepository.deleteById(existingEmployee.getId());
 	}

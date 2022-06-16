@@ -2,7 +2,6 @@ package com.springAPI.demo.controller;
 
 import java.util.List;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.service.TeamService;
@@ -52,7 +53,12 @@ public class TeamController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteTeam(@PathVariable("id") long id) {
-		return new ResponseEntity<String>(teamService.deleteTeam(id), HttpStatus.OK);
+	@ResponseBody
+	public ResponseEntity<Message> deleteTeam(@PathVariable("id") long id) {
+		if(teamService.deleteTeam(id)) {
+			return ResponseEntity.status(HttpStatus.OK).body(new Message("deleted team", "success"));	
+		} else {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(new Message("cannot delete please check employee inside this team", "failed"));		
+		}
 	}
 }

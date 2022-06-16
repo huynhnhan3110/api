@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.service.EmployeeService;
@@ -56,9 +57,9 @@ public class EmployeeController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id) {
+	public ResponseEntity<Message> deleteEmployee(@PathVariable("id") long id) {
 		employeeService.deleteEmployee(id);
-		return new ResponseEntity<String>("Employee delete success", HttpStatus.OK);
+		return new ResponseEntity<Message>(new Message("Employee delete success", "success"), HttpStatus.OK);
 	}
 	
 	@GetMapping("/search")

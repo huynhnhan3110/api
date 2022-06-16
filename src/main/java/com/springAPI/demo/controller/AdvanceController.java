@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.model.Advance;
-import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.service.AdvanceService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -40,9 +40,9 @@ public class AdvanceController {
 		return new ResponseEntity<Advance>(advanceService.getAdvanceById(id), HttpStatus.OK);
 	}
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteAdvance(@PathVariable("id") long id) {
+	public ResponseEntity<Message> deleteAdvance(@PathVariable("id") long id) {
 		advanceService.deleteAdvance(id);
-		return new ResponseEntity<String>("Delete advance success", HttpStatus.OK);
+		return new ResponseEntity<Message>(new Message("Delete advance success", "success"), HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")

@@ -30,12 +30,12 @@ public class WorkingServiceImpl implements WorkingService{
 	
 	@Override
 	public Working getWorkingById(long id) {
-		return workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id));
+		return workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id,"failed"));
 	}
 
 	@Override
 	public Working updateWorking(Working working, long id) {
-		Working existingWorking = workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id));
+		Working existingWorking = workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id,"failed"));
 		existingWorking.setNumberHour(working.getNumberHour());
 		workingRepository.save(existingWorking);
 		return existingWorking;
@@ -43,7 +43,7 @@ public class WorkingServiceImpl implements WorkingService{
 
 	@Override
 	public void deleteWorking(long id) {
-		Working existingWorking = workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id));
+		Working existingWorking = workingRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Working not exist with id: "+ id,"failed"));
 		workingRepository.deleteById(existingWorking.getId());
 	}
 	@Override
@@ -59,7 +59,7 @@ public class WorkingServiceImpl implements WorkingService{
 			return filteredWorking;
 		}
 		else {
-			throw new ResourceNotFound("Employee not exist with id:" + id);
+			throw new ResourceNotFound("Employee not exist with id:" + id,"failed");
 		}
 	}
 
