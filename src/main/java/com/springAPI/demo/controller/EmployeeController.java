@@ -43,7 +43,7 @@ public class EmployeeController {
 	}
 	@GetMapping("{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long id) {
-		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id),HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id),HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")

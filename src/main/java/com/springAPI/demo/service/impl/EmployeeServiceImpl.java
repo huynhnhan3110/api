@@ -97,7 +97,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		Optional<Team> team = teamRepository.findById(employee.getTeam().getTeamId());
 		System.out.println(team.get().getTeamId());
 		if(team.isPresent()) {
-			System.out.println("tồn tại");
 			existingEmployee.setTeam(team.get());
 			return employeeRepository.save(existingEmployee);
 			
