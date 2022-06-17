@@ -85,6 +85,7 @@ The app defines following CRUD APIs.
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
 | GET    | /api/advances | Get all advances | |
+| GET    | /api/advances?employeeId={id} | Get advance list by employee id | |
 | GET    | /api/advances/{id} | Get advance by id | |
 | POST   | /api/advances | Create new advance | [JSON](#createAdvance) |
 | PUT    | /api/advances/update/{id} | Update advance by id | [JSON](#updateAdvance) |

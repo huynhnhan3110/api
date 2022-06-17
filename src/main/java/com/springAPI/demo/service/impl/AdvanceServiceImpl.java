@@ -1,11 +1,13 @@
 package com.springAPI.demo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.springAPI.demo.exception.ResourceNotFound;
 import com.springAPI.demo.model.Advance;
+import com.springAPI.demo.model.Working;
 import com.springAPI.demo.repository.AdvanceRepository;
 import com.springAPI.demo.service.AdvanceService;
 @Service
@@ -46,5 +48,20 @@ public class AdvanceServiceImpl implements AdvanceService{
 		return existingAdvance;
 	}
 		
-
+	@Override
+	public List<Advance> getAdvanceByEmployee(long id) {
+		List<Advance> allAdvances = advanceRepository.findAll();
+		List<Advance> filteredAdvance = new ArrayList<Advance>();
+		for(Advance advance : allAdvances) {
+			if(advance.getEmployee_id() == (int)id) {
+				filteredAdvance.add(advance);
+			}
+		}
+		if(!filteredAdvance.isEmpty()) {			
+			return filteredAdvance;
+		}
+		else {
+			throw new ResourceNotFound("Employee not exist with id:" + id,"failed");
+		}
+	}
 }

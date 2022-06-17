@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.model.Advance;
+import com.springAPI.demo.model.Working;
 import com.springAPI.demo.service.AdvanceService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -48,5 +49,10 @@ public class AdvanceController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Advance> updateAdvance(@PathVariable("id") long id, @RequestBody Advance advance) {
 		return new ResponseEntity<Advance>(advanceService.updateAdvance(id, advance), HttpStatus.OK);
+	}
+	
+	@GetMapping(params = "employeeId")
+	public ResponseEntity<List<Advance>> getAdvanceByEmployee(long employeeId) {
+		return new ResponseEntity<List<Advance>>(advanceService.getAdvanceByEmployee(employeeId), HttpStatus.OK);
 	}
 }

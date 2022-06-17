@@ -8,4 +8,5 @@ public interface AdvanceService {
 	void deleteAdvance(long id);
 	List<Advance> getAllAdvance();
 	Advance updateAdvance(long id, Advance advance);
+	List<Advance> getAdvanceByEmployee(long id);
 }
