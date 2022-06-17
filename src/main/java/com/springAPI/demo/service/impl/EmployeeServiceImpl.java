@@ -8,13 +8,10 @@ import java.util.stream.Collectors;
 
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.repository.TeamRepository;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.exception.ResourceNotFound;
 import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.repository.EmployeeRepository;
@@ -54,13 +51,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 		List<Employee> filteredEmployee = allEmployees.stream().filter((item) -> {
 			return item.getFullName().toLowerCase().contains(search.toLowerCase());
-		}).toList();
+		}).collect(Collectors.toList());
 		
 		Map<String, Object> mapResult = new HashMap<>();
 		try {
 			int pageNo = Integer.parseInt(pageNoStr);
 			int pageSize = Integer.parseInt(pageSizeStr);
-			List<Employee> paginatedEmployee = filteredEmployee.stream().skip((pageNo - 1) * pageSize).limit(pageSize).toList();
+			List<Employee> paginatedEmployee = filteredEmployee.stream().skip((pageNo - 1) * pageSize).limit(pageSize).collect(Collectors.toList());
 			mapResult.put("total", filteredEmployee.size());
 			mapResult.put("data", paginatedEmployee);
 			return mapResult;
