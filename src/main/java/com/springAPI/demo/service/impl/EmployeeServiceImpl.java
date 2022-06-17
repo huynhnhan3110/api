@@ -44,41 +44,30 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	@Override
 	public Map<String, Object> getAllEmployees(String pageNoStr, String pageSizeStr, String search) {
-		
 		List<Employee> allEmployees = employeeRepository.findAll();
-		 
-		// get all employees
-		if(pageNoStr == null && pageSizeStr == null) {
+		if(pageSizeStr==null && pageNoStr==null) {
 			Map<String, Object> mapResult = new HashMap<>();
 			mapResult.put("total", allEmployees.size());
 			mapResult.put("data", allEmployees);
 			return mapResult;
-		} 
+		}
 		
-		// get employee by full name
-		List<Employee> filteredEmployees = allEmployees.stream().filter((item) -> {
-			String resultStr = item.getFullName().toLowerCase();
-			String equalStr = search.toLowerCase();
-			return resultStr.contains(equalStr);
-			}
-		).collect(Collectors.toList());
+		List<Employee> filteredEmployee = allEmployees.stream().filter((item) -> {
+			return item.getFullName().toLowerCase().contains(search.toLowerCase());
+		}).toList();
 		
-		// Paginate employee
 		Map<String, Object> mapResult = new HashMap<>();
 		try {
 			int pageNo = Integer.parseInt(pageNoStr);
 			int pageSize = Integer.parseInt(pageSizeStr);
-			
-			List<Employee> paginatedEmployees = filteredEmployees.stream()
-	                .skip((pageNo -1) * pageSize)
-	                .limit(pageSize)
-	                .collect(Collectors.toList());
-			mapResult.put("total", filteredEmployees.size());
-			mapResult.put("data", paginatedEmployees);
+			List<Employee> paginatedEmployee = filteredEmployee.stream().skip((pageNo - 1) * pageSize).limit(pageSize).toList();
+			mapResult.put("total", filteredEmployee.size());
+			mapResult.put("data", paginatedEmployee);
 			return mapResult;
 		}catch (Exception e) {
 			return mapResult;
 		}
+		
 	}
 
 	

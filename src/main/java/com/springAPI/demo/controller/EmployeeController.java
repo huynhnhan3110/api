@@ -38,6 +38,7 @@ public class EmployeeController {
 	public Map<String, Object> getAllEmployees(@RequestParam(name = "page", required = false) String page,
 		      @RequestParam(name = "size", required = false) String size,
 		      @RequestParam(name = "search", required = false, defaultValue = "") String search) {
+		
 		 return employeeService.getAllEmployees(page, size, search);
 	}
 	@GetMapping("{id}")
