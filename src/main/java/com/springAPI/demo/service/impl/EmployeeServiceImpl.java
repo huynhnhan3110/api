@@ -108,9 +108,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeRepository.deleteById(existingEmployee.getId());
 	}
 	@Override
-	public List<Employee> searchEmployees(String full_name, String address, String position) {
-		System.out.println(full_name);
-		return employeeRepository.searchEmployees(full_name,address,position);
+	public Page<Employee> searchEmployees(String full_name, int page, int size) {
+		PageRequest pageRequest = PageRequest.of(page - 1, size, Sort.Direction.ASC,"employee_id");
+		return employeeRepository.findByName(full_name, pageRequest);
 	}
 
 

@@ -11,8 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.springAPI.demo.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-	@Query(value = "SELECT * FROM employees e WHERE e.full_name LIKE CONCAT('%',:full_name,'%')"
-			+ " OR e.address LIKE CONCAT('%',:address,'%') "
-			+ "OR e.position LIKE CONCAT('%',:position,'%')",nativeQuery = true)
-	List<Employee> searchEmployees(String full_name, String address, String position);
+	@Query(value = "SELECT * FROM employees WHERE full_name LIKE CONCAT('%',:full_name,'%')", nativeQuery = true)
+	Page<Employee> findByName(String full_name, PageRequest pageRequest);
 }

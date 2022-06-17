@@ -3,6 +3,7 @@ package com.springAPI.demo.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -64,10 +65,10 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/search")
-	public ResponseEntity<List<Employee>> searchEmployees(
-			@RequestParam(required = false, defaultValue = "") String full_name,
-			@RequestParam(required = false, defaultValue = "") String address,
-			@RequestParam(required = false, defaultValue ="") String position){
-		return new ResponseEntity<List<Employee>>(employeeService.searchEmployees(full_name, address, position), HttpStatus.OK);
+	public Page<Employee> searchEmployees(
+			@RequestParam(required = false, defaultValue = "")  String full_name,
+			@RequestParam(required = false, defaultValue = "1") Integer page,
+			@RequestParam(required = false, defaultValue = "5") Integer size){
+		return employeeService.searchEmployees(full_name, page, size);
 	}
 }
