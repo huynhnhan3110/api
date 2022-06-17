@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.springAPI.demo.model.Team;
 import com.springAPI.demo.repository.TeamRepository;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.springAPI.demo.exception.Message;
 import com.springAPI.demo.exception.ResourceNotFound;
 import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.repository.EmployeeRepository;
@@ -41,21 +43,42 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	
 	@Override
-	public Map<String, Object> getAllEmployees(int pageNo, int pageSize, String sort) {
-	    Sort sortable = null;
-	    if (sort.equals("ASC")) {
-	      sortable = Sort.by("id").ascending();
-	    }
-	    if (sort.equals("DESC")) {
-	      sortable = Sort.by("id").descending();
-	    }
-		PageRequest paging = PageRequest.of(pageNo-1, pageSize,sortable);
-		Page<Employee> pagedResult = employeeRepository.findAll(paging);
-		System.out.println(pagedResult.getTotalElements());
+	public Map<String, Object> getAllEmployees(String pageNoStr, String pageSizeStr, String search) {
+		
+		List<Employee> allEmployees = employeeRepository.findAll();
+		 
+		// get all employees
+		if(pageNoStr == null && pageSizeStr == null) {
+			Map<String, Object> mapResult = new HashMap<>();
+			mapResult.put("total", allEmployees.size());
+			mapResult.put("data", allEmployees);
+			return mapResult;
+		} 
+		
+		// get employee by full name
+		List<Employee> filteredEmployees = allEmployees.stream().filter((item) -> {
+			String resultStr = item.getFullName().toLowerCase();
+			String equalStr = search.toLowerCase();
+			return resultStr.contains(equalStr);
+			}
+		).collect(Collectors.toList());
+		
+		// Paginate employee
 		Map<String, Object> mapResult = new HashMap<>();
-		mapResult.put("total", pagedResult.getTotalElements());
-		mapResult.put("data", pagedResult.toList());
-		return mapResult;
+		try {
+			int pageNo = Integer.parseInt(pageNoStr);
+			int pageSize = Integer.parseInt(pageSizeStr);
+			
+			List<Employee> paginatedEmployees = filteredEmployees.stream()
+	                .skip((pageNo -1) * pageSize)
+	                .limit(pageSize)
+	                .collect(Collectors.toList());
+			mapResult.put("total", filteredEmployees.size());
+			mapResult.put("data", paginatedEmployees);
+			return mapResult;
+		}catch (Exception e) {
+			return mapResult;
+		}
 	}
 
 	

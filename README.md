@@ -44,9 +44,9 @@ The app defines following CRUD APIs.
 | ------ | --- | ----------- | ------------------------- |
 | POST   | /api/employees/ | Add new employee to existing id team | [JSON](#createEmployeeExistingTeam) |
 | GET    | /api/employees/ | Get all employees | |
-| GET    | /api/employees?page=3&size=2&sort=DESC | Get all employees with pagination by pageNum (default = 1), pageSize (default = 5), sortBy(default = ASC) | |
+| GET    | /api/employees?page=1&size=1 | Get all employees with pagination  | |
 | GET    | /api/employees/{id} | Get employee by id | |
-| GET    | /api/employees/search?full_name={fullname} | Search employee by fullname | |
+| GET    | /api/employees?page=1&size=2&search={fullName} | Search employee by fullname | |
 | PUT    | /api/employees/update/{id} | Update employee by id | [JSON](#updateEmployeeById) |
 | DELETE    | /api/employees/delete/{id} | Delete employee by id | |
 

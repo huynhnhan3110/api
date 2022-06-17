@@ -1,9 +1,7 @@
 package com.springAPI.demo.controller;
 
-import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,12 +35,11 @@ public class EmployeeController {
 
 	
 	@GetMapping
-	public Map<String, Object> getAllEmployees(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
-		      @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
-		      @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort) {
-		return employeeService.getAllEmployees(page, size, sort);
+	public Map<String, Object> getAllEmployees(@RequestParam(name = "page", required = false) String page,
+		      @RequestParam(name = "size", required = false) String size,
+		      @RequestParam(name = "search", required = false, defaultValue = "") String search) {
+		 return employeeService.getAllEmployees(page, size, search);
 	}
-	
 	@GetMapping("{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long id) {
 		return new ResponseEntity<Employee>(employeeService.getEmployeeById(id),HttpStatus.NOT_FOUND);
@@ -64,11 +61,11 @@ public class EmployeeController {
 		return new ResponseEntity<Message>(new Message("Employee delete success", "success"), HttpStatus.OK);
 	}
 	
-	@GetMapping("/search")
-	public Page<Employee> searchEmployees(
-			@RequestParam(required = false, defaultValue = "")  String full_name,
-			@RequestParam(required = false, defaultValue = "1") Integer page,
-			@RequestParam(required = false, defaultValue = "5") Integer size){
-		return employeeService.searchEmployees(full_name, page, size);
-	}
+//	@GetMapping("/search")
+//	public Page<Employee> searchEmployees(
+//			@RequestParam(required = false, defaultValue = "")  String full_name,
+//			@RequestParam(required = false, defaultValue = "1") Integer page,
+//			@RequestParam(required = false, defaultValue = "5") Integer size){
+//		return employeeService.searchEmployees(full_name, page, size);
+//	}
 }
