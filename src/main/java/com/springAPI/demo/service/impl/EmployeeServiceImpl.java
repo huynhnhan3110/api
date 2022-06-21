@@ -48,7 +48,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 			mapResult.put("data", allEmployees);
 			return mapResult;
 		}
-		
 		List<Employee> filteredEmployee = allEmployees.stream().filter((item) -> {
 			return item.getFullName().toLowerCase().contains(search.toLowerCase());
 		}).collect(Collectors.toList());

@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springAPI.demo.model.Advance;
 import com.springAPI.demo.model.Employee;
 import com.springAPI.demo.model.Statistics;
 import com.springAPI.demo.model.Working;
+import com.springAPI.demo.repository.AdvanceRepository;
 import com.springAPI.demo.repository.EmployeeRepository;
 import com.springAPI.demo.repository.StatisticRepository;
 import com.springAPI.demo.repository.WorkingRepository;
@@ -18,16 +20,18 @@ public class StatisticsServiceImpl implements StatisticsService{
 	private EmployeeRepository employeeRepository;
 	private WorkingRepository	workingRepository;
 	private StatisticRepository statisticRepository;
-	
+	private AdvanceRepository advanceRepository;
 	@Autowired
 	private WorkingServiceImpl workingService = new WorkingServiceImpl(workingRepository);
 	
 	public StatisticsServiceImpl(EmployeeRepository employeeRepository, 
 			WorkingRepository workingRepository,
-			StatisticRepository statisticRepository) {
+			StatisticRepository statisticRepository,
+			AdvanceRepository advanceRepository) {
 		this.employeeRepository = employeeRepository;
 		this.workingRepository = workingRepository;
 		this.statisticRepository = statisticRepository;
+		this.advanceRepository = advanceRepository;
 	}
 	
 	@Override
@@ -44,7 +48,14 @@ public class StatisticsServiceImpl implements StatisticsService{
 			}
 			Statistics statisticsPerEmployee = new Statistics();
 			statisticsPerEmployee.setNo_of_employee((int)e.getId());
-			statisticsPerEmployee.setMoney(e.getMoneyPerHour() * sumOfHourEachEmployee); // update to table
+			double totalWithoutAdvance = e.getMoneyPerHour() * sumOfHourEachEmployee;
+			String employeeIdStr = Long.toString(e.getId());
+			List<Advance> advancesByEmployee = advanceRepository.getAdvanceByEmployeeId(employeeIdStr);
+			double totalAdvance = 0;
+			for(Advance advance : advancesByEmployee) {
+				totalAdvance += advance.getMoney();
+			}
+			statisticsPerEmployee.setMoney(totalWithoutAdvance - totalAdvance); // update to table
 			statistics.add(statisticsPerEmployee); 
 		}
 		return statistics;
