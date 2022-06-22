@@ -115,6 +115,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeRepository.deleteById(existingEmployee.getId());
 	}
 	@Override
+	public void deleteEmployeesByList(List<Long> ids) {
+		ids.forEach((id) -> {
+			Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Employeee not exist with id: "+ id,"failed"));
+			existingEmployee.removeTeam();
+			employeeRepository.deleteById(existingEmployee.getId());
+		});
+	}
+	@Override
 	public Page<Employee> searchEmployees(String full_name, int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page - 1, size, Sort.Direction.ASC,"employee_id");
 		return employeeRepository.findByName(full_name, pageRequest);

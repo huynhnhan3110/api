@@ -1,5 +1,6 @@
 package com.springAPI.demo.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -60,6 +61,12 @@ public class EmployeeController {
 	public ResponseEntity<Message> deleteEmployee(@PathVariable("id") long id) {
 		employeeService.deleteEmployee(id);
 		return new ResponseEntity<Message>(new Message("Employee delete success", "success"), HttpStatus.OK);
+	}
+	
+	@PostMapping("/delete/")
+	public ResponseEntity<Message> deleteEmployeesByList(@RequestBody List<Long> ids) {
+		employeeService.deleteEmployeesByList(ids);
+		return new ResponseEntity<Message>(new Message("Employee list delete success", "success"), HttpStatus.OK);
 	}
 	
 //	@GetMapping("/search")

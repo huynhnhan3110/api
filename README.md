@@ -49,6 +49,7 @@ The app defines following CRUD APIs.
 | GET    | /api/employees?page=1&size=2&search={fullName} | Search employee by fullname | |
 | PUT    | /api/employees/update/{id} | Update employee by id | [JSON](#updateEmployeeById) |
 | DELETE    | /api/employees/delete/{id} | Delete employee by id | |
+| POST    | /api/employees/delete/ | Delete employees by id list | [ARRAY](#deleteEmployeeByIdList) |
 
 ### Team
 
@@ -128,7 +129,11 @@ Test them using postman or any other rest client.
     }
 
 ```
+##### <a id="deleteEmployeeByIdList">delete Employees by id list -> /api/employees/delete/</a>
+```json
+[1,2,3]
 
+```
 
 ##### <a id="createNewTeam">Add new team -> /api/teams</a>
 ```json
